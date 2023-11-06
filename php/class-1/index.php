@@ -1,30 +1,83 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_ecommerce";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $users = [];
+    for ($i = 0; $i < 5; $i++) {
+        $name = "User-$i";
+        $email = "user$i@gmail.com";
+        $phone = "0175445454$i";
+        $users[] = "('$name', '$email', '$phone')";
+    }
+
+    $values = implode(',', $users);
+
+    $sql = "INSERT INTO users (name, email, phone) VALUES $values";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "created successfully";
+    } else {
+        echo "error :" . $sql . "<br>" . $conn->error;
+    }
+
+    
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Basic</title>
+    <style>
+        .phpcoding {
+            width: 900px;
+            margin: 0 auto;
+            background: #ddd;
+        }
+        .headeroption, .footeroption {
+            background: #444;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .maincontent {
+            min-height: 400px;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <?php
-        $lang = 'PHP';
-        echo '<h1>I love '. $lang .'</h1>';
+    <div class="phpcoding">
+        <section class="headeroption">
+            <h2>PHP Fundamental Training</h2>
+        </section>
+        <section class="maincontent">
+            <?php ?>
+        </section>
 
-        $students = array(
-            array ("Shuvo", "01719861466", "shuvo@gmail.com"),
-            array ("Shamim", "01822400600", "shamim@gmail.com"),
-            array ("Borhan", "01611267243", "borhan@gmail.com"),
-            array ("Rifat", "01611267243", "rifat@gmail.com")
-        );
-
-        foreach($students as $key => $row) {
-            echo "<h3>Student - ". intVal($key+1) ."</h3>";
-            echo "<u>";
-            foreach($row as $i => $cols) {
-                echo "<li>$cols</li>";
-            }
-            echo "</ul>";
-        }
-    ?>
+        <section class="footeroption">
+            <h2>www.trainingwithliveproject.com</h2>
+        </section>
+    </div>
 </body>
 </html>
+
+        
+    
+        
+        
+        
+    
+
