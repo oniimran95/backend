@@ -25,7 +25,8 @@ class StoreStudentRequest extends FormRequest
             'name'          => 'required|min:3',
             'email'         => 'required|email',
             'date_of_birth' => 'required',
-            'gender'        => 'required'
+            'gender'        => 'required',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

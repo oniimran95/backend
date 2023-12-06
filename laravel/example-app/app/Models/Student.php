@@ -14,5 +14,6 @@ class Student extends Model
         'email',
         'gender',
         'date_of_birth',
+        'image'
     ];
 }

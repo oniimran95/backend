@@ -32,6 +32,14 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $form_data = $request->validated();
+
+        if($request->hasfile('image')) {
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/images', $fileName);
+            $form_data['image'] = $fileName;
+        }
+        
+
         Student::create($form_data);
         return redirect()->route('students.index');
     }
@@ -58,6 +66,13 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $form_data = $request->validated();
+
+        if($request->hasfile('image')) {
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/images', $fileName);
+            $form_data['image'] = $fileName;
+        }
+
         Student::whereId($student->id)->update($form_data);
         return redirect()->route('students.index');
     }

@@ -14,7 +14,7 @@
                               <a class=" bg-black text-white rounded-md hover:bg-sky-400 px-4 py-2" href="{{ route('students.index') }}">
                                   << Go to home page
                               </a>
-                            <form action="{{ route('students.store') }}" method="post">
+                            <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
                               @csrf
                               <div class=" grid grid-cols-2 gap-5">
                                <div>
@@ -44,10 +44,10 @@
                                       <span class="text-red-700">{{$message}}</span>
                                     @enderror
                                 </div>
-                              </div>
-
-                                <label for="date" class="block mt-2 font-bold text-gray-600">Date_of_birth</label>
-                                <input
+                              
+                                <div>
+                                  <label for="date" class="block mt-2 font-bold text-gray-600">Date-of-birth</label>
+                                  <input
                                   type="date"
                                   id="date" 
                                   name="date_of_birth"
@@ -55,16 +55,31 @@
                                   class="border border-gray-500 px-4 py-2 focus:outline-none focus:border-purple-500 w-full">
                                   @error('date_of_birth')
                                       <span class="text-red-700">{{$message}}</span>
-                                  @enderror                                
-                                <label for="gender" class="block mt-2 font-bold text-gray-600">Gender</label>
-                                <input
+                                  @enderror
+                                </div>
+
+                                <div >
+                                  <label for="image" class="block mt-2 font-bold text-gray-600">Image</label>
+                                  <input
+                                    type="file"
+                                    id="image" 
+                                    name="image"
+                                    class="border border-gray-500 px-4 py-2 focus:outline-none focus:border-purple-500 w-full">
+                                    @error('image')
+                                      <span class="text-red-700">{{$message}}</span>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                  <label for="gender" class="block mt-2 font-bold text-gray-600">Gender</label>
+                                  <input
                                   type="radio"
                                   id="male" 
                                   name="gender"
                                   value="male" 
                                   class="py-1" 
                                   @if(old('gender') === 'male') checked @endif >
-                                  <label for="male">Male</label>
+                                <label for="male">Male</label>
                              
 
                                 <input
@@ -73,7 +88,7 @@
                                   name="gender" 
                                   value="female" 
                                   @if(old('gender') === 'female') checked @endif >
-                                  <label for="female">Female</label>
+                                <label for="female">Female</label>
                              
 
                                 <input
@@ -82,10 +97,12 @@
                                   name="gender" 
                                   value="others"
                                   @if(old('gender') === 'others') checked @endif >
-                                  <label for="others">Others</label>
-                              
+                                <label for="others">Others</label>
+                                </div>
+
+                              </div>
                      
-                                <button class="block w-full bg-green-600 hover:bg-green-500 text-white font-bold p-4 rounded-lg">Submit</button>
+                                <button class="block w-full mt-3 bg-green-600 hover:bg-green-500 text-white font-bold p-4 rounded-lg">Submit</button>
                             </form>
                         </div>
                     </div>

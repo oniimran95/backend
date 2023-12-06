@@ -26,6 +26,9 @@
                                     <th class="px-6 py-4" scope="col ">#</th>
                                     <th class="px-6 py-4" scope="col">Name</th>
                                     <th class="px-6 py-4" scope="col">Email</th>
+                                    <th class="px-6 py-4" scope="col">Gender</th>
+                                    <th class="px-6 py-4" scope="col">Date-of-birth</th>
+                                    <th class="px-6 py-4" scope="col">Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,6 +38,11 @@
                                     <th class="px-6 py-4">{{ $loop->iteration }}</th>
                                     <td class="px-6 py-4">{{ $student->name }}</td>
                                     <td class="px-6 py-4">{{ $student->email }}</td>
+                                    <td class="px-6 py-4">{{ $student->gender }}</td>
+                                    <td class="px-6 py-4">{{ $student->date_of_birth }}</td>
+                                    <td class="px-6 py-4">
+                                        <img width="50px" src="{{ asset("storage/images/$student->image") }}" alt="">
+                                    </td>
                                     <td>
                                         <a href="{{ route('students.edit', $student->id) }}">Edit</a> |
                                         <form action="{{ route('students.destroy', $student->id) }}" method="post">
