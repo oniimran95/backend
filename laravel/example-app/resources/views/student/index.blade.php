@@ -29,6 +29,10 @@
                                     <th class="px-6 py-4" scope="col">Gender</th>
                                     <th class="px-6 py-4" scope="col">Date-of-birth</th>
                                     <th class="px-6 py-4" scope="col">Image</th>
+                                    <th class="px-6 py-4" scope="col">Class-name</th>
+                                    <th class="px-6 py-4" scope="col">Roll</th>
+                                    <th class="px-6 py-4" scope="col">Reg</th>
+                                    <th class="px-6 py-4" scope="col">Result</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,6 +47,10 @@
                                     <td class="px-6 py-4">
                                         <img width="50px" src="{{ asset("storage/images/$student->image") }}" alt="">
                                     </td>
+                                    <td class="px-6 py-4">{{ $student->class_name }}</td>
+                                    <td class="px-6 py-4">{{ $student->roll_no }}</td>
+                                    <td class="px-6 py-4">{{ $student->reg_no }}</td>
+                                    <td class="px-6 py-4">{{ $student->result }}</td>
                                     <td>
                                         <a href="{{ route('students.edit', $student->id) }}">Edit</a> |
                                         <form action="{{ route('students.destroy', $student->id) }}" method="post">
