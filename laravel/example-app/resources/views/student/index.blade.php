@@ -56,7 +56,7 @@
                                         <form action="{{ route('students.destroy', $student->id) }}" method="post">
                                          @csrf
                                          @method('delete')
-                                         <input type="submit" value="delete"/>
+                                         <input type="submit" class="cursor-pointer" value="Delete"/>
                                         </form>
                                     </td>
                                 </tr>

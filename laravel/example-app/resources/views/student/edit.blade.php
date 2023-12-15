@@ -45,7 +45,7 @@
                                 </div>
                               
                                 <div>
-                                  <label for="date" class="block mt-2 font-bold text-gray-600">Date_of_birth</label>
+                                  <label for="date" class="block mt-2 font-bold text-gray-600">Date-Of-Birth</label>
                                 <input
                                   type="date"
                                   id="date" 
@@ -68,12 +68,12 @@
                                       <span class="text-red-700">{{$message}}</span>
                                     @enderror
                                     <div>
-                                      <img src="{{ asset("storage/images/$student->image") }}" alt="">
+                                      <img width="100px" src="{{ asset("storage/images/$student->image") }}" alt="">
                                     </div>
                                 </div>
 
                                 <div>
-                                  <label for="gender" class="block mt-2 font-bold text-gray-600">Gender</label>
+                                  <label for="gender" class="block mt-4 font-bold text-gray-600">Gender</label>
                                   <input
                                     type="radio"
                                     id="male" 
@@ -99,9 +99,59 @@
                                     @if(old('gender') === 'female') checked @endif >
                                   <label for="others">Others</label>
                                 </div>
+
+                              <div >
+                                <label for="class_name" class="block mt-4 font-bold text-gray-600">Class-name</label>
+                                <select class="capitalize w-full"  name="class_name" id="class_name">
+                                  @foreach ($initialData['clses'] as $cls)
+                                  <option value="{{ $cls }}">{{ $cls }}</option>
+                                  @endforeach
+                                </select>
+                                  @error('class_name')
+                                    <span class="text-red-700">{{$message}}</span>
+                                  @enderror
                               </div>
-                     
-                                <button class="block w-full bg-green-600 hover:bg-green-500 text-white font-bold p-4 rounded-lg">Update</button>
+
+                              <div >
+                                <label for="roll_no" class="block mt-4 font-bold text-gray-600">Roll</label>
+                                <input
+                                  type="text"
+                                  id="roll_no" 
+                                  name="roll_no" 
+                                  value="{{ old('roll_no') ?? $student->roll_no }}"
+                                  class="border border-gray-500 px-4 py-2 focus:outline-none focus:border-purple-500 w-full">
+                                  @error('roll_no')
+                                    <span class="text-red-700">{{$message}}</span>
+                                  @enderror
+                              </div>
+
+                              <div >
+                                <label for="reg_no" class="block mt-4 font-bold text-gray-600">Reg</label>
+                                <input
+                                  type="text"
+                                  id="reg_no" 
+                                  name="reg_no" 
+                                  value="{{ old('reg_no') ?? $student->reg_no }}"
+                                  class="border border-gray-500 px-4 py-2 focus:outline-none focus:border-purple-500 w-full">
+                                  @error('reg_no')
+                                    <span class="text-red-700">{{$message}}</span>
+                                  @enderror
+                              </div>
+
+                              <div >
+                                <label for="result" class="block mt-4 font-bold text-gray-600">Result</label>
+                                  <select class="w-full" name="result" id="result">
+                                    @foreach ($initialData['results'] as $results)
+                                  <option value="{{ $results }}">{{ $results }}</option>
+                                  @endforeach
+                                  </select>
+                                  @error('result')
+                                    <span class="text-red-700">{{$message}}</span>
+                                  @enderror
+                              </div>
+
+                            </div>
+                                <button class="block w-full mt-2 bg-green-600 hover:bg-green-500 text-white font-bold p-4 rounded-lg">Update</button>
                             </form>
                         </div>
                     </div>

@@ -17,8 +17,8 @@
                                     <th class="px-6 py-4" scope="col">Name</th>
                                     <th class="px-6 py-4" scope="col">Email</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                            </thead> 
+                           <tbody>
                                 @foreach($users as $user)
                                 <tr>
                                     <th class="px-6 py-4">{{ $loop->iteration }}</th>

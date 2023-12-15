@@ -59,7 +59,13 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('student.edit', compact('student'));
+        $initialData = $this->initialData();
+
+        $students = Student::select('students.*', 'class_name', 'roll_no', 'reg_no', 'result')
+            ->join('class_infos', 'student_id', 'students.id')
+            ->where('students.id', $student->id)
+            ->first();
+        return view('student.edit', compact('student', 'initialData'));
     }
 
     /**
@@ -86,5 +92,15 @@ class StudentController extends Controller
     {
         Student::whereid($student->id)->delete();
         return back();
+    }
+
+    private function initialData() {
+        $clses    = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+        $results  = ['A+', 'A-', 'A', 'B', 'C', 'D', 'F'];
+
+        return [
+            'clses'   => $clses,
+            'results' => $results
+        ];
     }
 }
